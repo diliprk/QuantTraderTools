@@ -42,12 +42,11 @@ QuantTraderTools is a platform designed for traders, offering automated signal c
    # Create virtual environment
    python -m venv venv
 
-   # Activate virtual environment
-   # For Windows:
-   venv\Scripts\activate
    # For macOS/Linux:
    source venv/bin/activate
    ```
+if `venv` is not found, install it first run `sudo apt install python3.12-venv` on the machine
+
 
 3. **Install Dependencies**
    ```bash
@@ -81,16 +80,79 @@ QuantTraderTools is a platform designed for traders, offering automated signal c
 
 2. **Configure Web Server**
    - Set up a production-grade web server (e.g., Gunicorn)
-   - Configure SSL certificates for HTTPS
    - Set up reverse proxy (e.g., Nginx)
 
-3. **Start Application**
+3. **Configure Firewall**
    ```bash
-    gunicorn -b 0.0.0.0:5000 app:app
+   # Allow HTTP traffic
+   sudo ufw allow 80
    ```
 
-### Troubleshooting
+4. **Install and Configure Nginx**
+   ```bash
+   # Install Nginx
+   sudo apt install nginx
 
-- If you encounter permission errors, ensure proper file permissions
-- For database connection issues, verify environment variables
-- Check logs in case of server startup problems
+   # Create Nginx configuration
+   sudo nano /etc/nginx/sites-available/quanttradertools
+   ```
+   
+   Add this configuration:
+   ```nginx
+   server {
+       listen 80;
+       server_name _;  # Catch all incoming requests
+
+       location / {
+           proxy_pass http://127.0.0.1:5000;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+       }
+   }
+   ```
+
+5. **Enable the Site**
+   ```bash
+   sudo ln -s /etc/nginx/sites-available/quanttradertools /etc/nginx/sites-enabled/
+   sudo rm /etc/nginx/sites-enabled/default  # Remove default site
+   sudo nginx -t
+   sudo systemctl restart nginx
+   ```
+
+6. **Start Application with Gunicorn**
+   ```bash
+   # Install Gunicorn if not already installed
+   pip install gunicorn
+
+   # Start Gunicorn (for testing)
+   gunicorn -w 4 -b 127.0.0.1:5000 app:app
+
+   # To keep it running after closing terminal, use:
+   nohup gunicorn -w 4 -b 127.0.0.1:5000 app:app &
+   ```
+
+### Important Notes
+- Your site will be accessible via your server's public IP address (e.g., http://your.public.ip)
+- This is a basic setup for testing. For production:
+  - Add SSL/TLS certificates
+  - Set up proper security headers
+  - Use environment variables for sensitive data
+  - Use a process manager (Supervisor/systemd) to keep the app running
+
+### Troubleshooting
+- If site isn't accessible, check:
+  ```bash
+  # Check if Nginx is running
+  sudo systemctl status nginx
+  
+  # Check Nginx error logs
+  sudo tail -f /var/log/nginx/error.log
+  
+  # Check if Gunicorn is running
+  ps aux | grep gunicorn
+  
+  # Check Gunicorn output
+  tail -f nohup.out
+  ```
