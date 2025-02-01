@@ -86,7 +86,7 @@ QuantTraderTools is a platform designed for traders, offering automated signal c
 
 3. **Start Application**
    ```bash
-   gunicorn -w 4 -b 0.0.0.0:8000 app:app
+    gunicorn -b 0.0.0.0:5000 app:app
    ```
 
 ### Troubleshooting

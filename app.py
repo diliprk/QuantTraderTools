@@ -59,4 +59,9 @@ def payment_acknowledgment():
     return render_template('payment-acknowledgment.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    if os.getenv('FLASK_ENV') == 'production':
+        # For production deployment on Replit
+        app.run(host='0.0.0.0', port=5000, debug=False)
+    else:
+        # For local development
+        app.run(debug=True)
