@@ -132,9 +132,16 @@ if `venv` is not found, install it first run `sudo apt install python3.12-venv` 
    # To keep it running after closing terminal, use:
    nohup gunicorn -w 4 -b 127.0.0.1:5000 app:app &
    ```
+   To run `nohup` commands for python, follow the below steps:
+```bash
+   cd ~/QuantTraderTools
+   nohup venv/bin/python app.py > app.log 2>&1 &
+```
 
 ### Important Notes
+
 - Your site will be accessible via your server's public IP address (e.g., http://your.public.ip)
+- Find your public IP address using `curl ipinfo.io/ip`
 - This is a basic setup for testing. For production:
   - Add SSL/TLS certificates
   - Set up proper security headers
@@ -142,7 +149,9 @@ if `venv` is not found, install it first run `sudo apt install python3.12-venv` 
   - Use a process manager (Supervisor/systemd) to keep the app running
 
 ### Troubleshooting
+
 - If site isn't accessible, check:
+
   ```bash
   # Check if Nginx is running
   sudo systemctl status nginx

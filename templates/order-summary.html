@@ -136,6 +136,19 @@
                 <img src="https://wise.com/public-resources/assets/acquiring-payments/wisetag-business/pww-button.svg" 
                      alt="Pay with Wise">
             </button>
+            <div class="mt-2 text-center" style="margin-top: 0.5rem; font-size: 0.875rem;">
+                <span style="color: #6b7280;">Don't have a Wise account? </span>
+                <a 
+                  href="https://wise.com/invite/dic/dilipr59"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="color: #2563eb; text-decoration: none;"
+                  onmouseover="this.style.textDecoration='underline'"
+                  onmouseout="this.style.textDecoration='none'"
+                >
+                  Sign up here
+                </a>
+            </div>
             {% else %}
             <button type="submit" form="orderForm" class="payment-button" 
                 onclick="handleUPIPayment(event, '{{ order_id }}', '{{ amount }}', '{{ product_type }}')">
