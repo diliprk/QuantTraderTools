@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary - QuantTraderTools</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/order-summary.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/paywithupi.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+    <script src="{{ url_for('static', filename='js/payment-handler.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/order-summary.js') }}"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <a href="/">
+                    <img src="{{ url_for('static',filename='images/logo.svg') }}" alt="QuantTraderTools Logo"/>
+                </a>
+            </div>
+            <h1 class="header-title">Complete your Payment</h1>
+            <div class="header-logo"></div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="order-summary">
+            <h2 class="section-title">Order Summary</h2>
+            <div class="summary-row">
+                <span><strong style="color: var(--text-color-lightgrey)">Order ID</strong></span>
+                <span>{{ order_id }}</span>
+            </div>
+            <div class="summary-row">
+                <span><strong style="color: var(--text-color-lightgrey)">Item</strong></span>
+                <span>
+                    {% if product_type == 'telegram' %}
+                        QuantCopier MT5 Telegram
+                    {% elif product_type == 'discord' %}
+                        QuantCopier MT5 Discord
+                    {% elif product_type == 'combo' %}
+                        QuantCopier MT5 Combo (Telegram + Discord)
+                    {% endif %}
+                </span>
+            </div>
+            <div class="summary-row">
+                <span><strong style="color: var(--text-color-lightgrey)">Subscription Type</strong></span>
+                <span>{{ plan_name }}</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total Amount</span>
+                <span>{% if currency == 'USD' %}$ {% else %}₹ {% endif %}{{ amount }}</span>
+            </div>
+        </div>
+
+        <div class="billing-section">
+            <h2 class="section-title">Billing Details</h2>
+            <p class="billing-description" style="text-align: center; text-justify: inter-word; font-size: 0.9rem; color: #888;">Please enter your KYC details for us to send the invoice once the transaction is complete.</p>
+            <form id="orderForm">
+                <input type="hidden" name="subscription_type" value="{{ subscription_type }}">
+                <input type="hidden" name="license_key" value="{{ license_key }}">
+                <input type="hidden" name="amount" value="{{ amount }}">
+                <input type="hidden" name="currency" value="{{ currency }}">
+                <input type="hidden" name="product_type" value="{{ product_type }}">
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">First Name</label>
+                        <input type="text" class="form-control" name="firstName">
+                    </div>
+                    <div class="form-col">
+                        <label class="form-label">Last Name</label>
+                        <input type="text" class="form-control" name="lastName">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">Email ID</label>
+                        <div class="input-wrapper">
+                            <input type="email" class="form-control" name="email" id="emailInput" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                            <div class="error-tooltip">
+                                Please enter a valid email address (e.g., example@domain.com)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <label class="form-label">
+                            Telegram Username
+                            <span class="info-tooltip">?
+                                <div class="tooltip-content">
+                                    For more info about telegram usernames or how to find yours please visit 
+                                    <a href="https://telegram.org/faq#usernames-and-t-me" target="_blank">https://telegram.org/faq#usernames-and-t-me</a>
+                                </div>
+                            </span>
+                        </label>
+                        <input type="tel" class="form-control" name="telegramMobile" placeholder="t.me/+123456789 or t.me/username">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col full-width">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" name="addressLine1">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-control" name="city">
+                    </div>
+                    <div class="form-col">
+                        <label class="form-label">State</label>
+                        <input type="text" class="form-control" name="state">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">Country</label>
+                        <input type="text" class="form-control" name="country">
+                    </div>
+                    <div class="form-col">
+                        <label class="form-label">PIN / ZIP Code</label>
+                        <input type="text" class="form-control" name="pincode">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="payment-section">
+            {% if currency == 'USD' %}
+            <button type="submit" form="orderForm" class="payment-button" 
+                onclick="handleWisePayment(event, '{{ amount }}', '{{ order_id }}')">
+                <img src="https://wise.com/public-resources/assets/acquiring-payments/wisetag-business/pww-button.svg" 
+                     alt="Pay with Wise">
+            </button>
+            {% else %}
+            <button type="submit" form="orderForm" class="payment-button" 
+                onclick="handleUPIPayment(event, '{{ order_id }}', '{{ amount }}', '{{ product_type }}')">
+                <img src="{{ url_for('static', filename='images/PayWithUPI.svg') }}" 
+                     alt="Pay with UPI">
+            </button>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Add UPI Payment Modal -->
+    <div id="upiModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Payment Instructions</h2>
+            <p>Scan QR Code below in any UPI app to Pay</p>
+            
+            <div class="upi-apps">
+                <img src="{{ url_for('static', filename='images/gpay-logo.svg') }}" alt="Google Pay">
+                <img src="{{ url_for('static', filename='images/paytm-logo.svg') }}" alt="Paytm">
+                <img src="{{ url_for('static', filename='images/phonepe-logo.svg') }}" alt="PhonePe">
+                <img src="{{ url_for('static', filename='images/bhim-logo.svg') }}" alt="BHIM UPI">
+            </div>
+
+            <div class="qr-container">
+                <img alt="UPI QR Code">
+                <div class="upi-id">
+                    <strong>UPI ID:</strong>
+                    <span id="upiIdSpan"></span>
+                </div>
+            </div>
+
+            <ol>
+                <li>Ensure the payee name appears as <strong>Dilip Rajkumar</strong></li>
+                <li>Click <strong>Payment Completed</strong> button below, after making the payment</li>
+            </ol>
+
+            <button onclick="handlePaymentCompleted()" class="payment-completed-btn">
+                Payment Completed
+            </button>
+        </div>
+    </div>
+
+    <!-- Add data attributes for order details -->
+    <div data-order-details 
+         data-order-id="{{ order_id }}"
+         data-product-type="{{ product_type }}"
+         data-plan-name="{{ plan_name }}"
+         data-currency="{{ currency }}"
+         data-amount="{{ amount }}"
+         style="display: none;"></div>
+
+    <!-- Initialize the order summary page -->
+    <script 
+        data-telegram-bot-token="{{ telegram_bot_token }}"
+        data-telegram-chat-id="{{ telegram_chat_id }}">
+        document.addEventListener('DOMContentLoaded', function() {
+            initOrderSummary('{{ telegram_bot_token }}', '{{ telegram_chat_id }}');
+        });
+    </script>
+</body>
+</html> 

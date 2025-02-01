@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - QuantTraderTools</title>
+    
+    <!-- Include your CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-LTR.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-components.css') }}">
+
+    <style>
+        /* Navigation styles */
+        .legal-nav {
+            background: var(--clr-dark-blue);
+            border-bottom: 1px solid var(--clr-main);
+            padding: 20px 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .legal-nav h2 {
+            color: var(--clr-main);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .legal-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .legal-nav li {
+            margin: 5px 0;
+        }
+
+        .legal-nav a {
+            color: var(--clr-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .legal-nav a:hover {
+            color: var(--clr-main);
+        }
+
+        .legal-nav a.active {
+            color: var(--clr-main);
+            font-weight: bold;
+        }
+
+        /* Content section styles */
+        .legal-section {
+            padding: 40px 0 80px 0;
+            background: var(--clr-dark-blue);
+            color: var(--clr-white);
+            min-height: 100vh;
+        }
+
+        .legal-section .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .legal-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--clr-main);
+        }
+
+        .legal-section h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--clr-main);
+        }
+
+        .legal-section .last-modified {
+            color: var(--clr-semi-dark);
+            margin-bottom: 2rem;
+        }
+
+        .legal-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .back-to-home {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-to-home a {
+            color: var(--clr-main);
+            text-decoration: none;
+        }
+
+        .back-to-home a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .legal-nav {
+                padding: 15px 10px;
+            }
+
+            .legal-nav h2 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .legal-nav ul {
+                gap: 15px;
+            }
+
+            .legal-nav a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .legal-nav ul {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .legal-nav li {
+                width: 100%;
+            }
+
+            .legal-nav a {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body class="dark-theme">
+    <nav class="legal-nav">
+        <h2>Legal</h2>
+        <ul>
+            <li><a href="{{ url_for('terms_conditions') }}" class="active">Terms and Conditions</a></li>
+            <li><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+            <li><a href="{{ url_for('refund_policy') }}">Refund Policy</a></li>
+        </ul>
+    </nav>
+    <section class="legal-section">
+        <div class="container">
+            <h1>QuantCopier Terms of Use</h1>
+
+            <p>These Terms of Use govern your access to and use of QuantCopier (the "Product"), offered by QuantTraderTools ("Company," "we," or "us") via our website (quanttradertools.github.io) and related services (collectively, the "Services"). By using the Services, you agree to these Terms and our Privacy Policy. If you disagree, do not use the Services.</p>
+
+            <h2>Eligibility</h2>
+            <p>The Services are for users aged 13 or older (16+ in the EU/UK). By using the Services, you confirm you meet this requirement and can form a binding contract. You are responsible for complying with all applicable laws.</p>
+
+            <h2>Risk Disclosure</h2>
+            <p>Trading foreign exchange on margin and CFDs carries substantial risk, including the potential loss of more than your initial investment. Leverage can magnify both gains and losses. Consider your investment objectives, experience, and risk tolerance before trading. Consult a financial advisor if needed. We are not responsible for any trading losses you incur while using QuantCopier.</p>
+
+            <h2>Service Availability</h2>
+            <p>We reserve the right to refuse service, modify or discontinue the Services (or any part thereof), or change prices without notice. We are not liable for any resulting impact.</p>
+
+            <h2>Information Accuracy</h2>
+            <p>We strive for accurate information but do not guarantee it. Content on our site is for general information only and should not be the sole basis for decisions. We are not obligated to update site information.</p>
+
+            <h2>Product/Service Offerings</h2>
+            <p>Product availability and pricing are subject to change without notice. We may limit product quantities or sales. We do not warrant that products will meet your expectations or that service errors will be corrected.</p>
+
+            <h2>Order Acceptance</h2>
+            <p>We may refuse or limit orders at our discretion.</p>
+
+            <h2>Third-Party Links</h2>
+            <p>We are not responsible for third-party content, products, or services linked from our site. Review third-party policies before engaging in any transactions.</p>
+
+            <h2>Terms Changes</h2>
+            <p>We may update these Terms at any time. Your continued use of the Services after changes are posted constitutes acceptance.</p>
+
+            <h2>Contact</h2>
+            <p>For questions regarding these Terms, contact us at <a href="mailto:quantcopier@gmail.com" style="color: var(--clr-main);">quantcopier@gmail.com</a>.</p>
+
+            <div class="back-to-home">
+                <a href="/">&larr; Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include your JavaScript files -->
+    <script src="{{ url_for('static', filename='js/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

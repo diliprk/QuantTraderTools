@@ -1,0 +1,34 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../webfonts/flaticon.ttf?4f7700d6618cd0ef11fa9dc7cf3a6fc7") format("truetype"),
+      url("../webfonts/flaticon.woff?4f7700d6618cd0ef11fa9dc7cf3a6fc7") format("woff"),
+      url("../webfonts/flaticon.woff2?4f7700d6618cd0ef11fa9dc7cf3a6fc7") format("woff2"),
+      url("../webfonts/flaticon.eot?4f7700d6618cd0ef11fa9dc7cf3a6fc7#iefix")
+        format("embedded-opentype"),
+      url("../webfonts/flaticon.svg?4f7700d6618cd0ef11fa9dc7cf3a6fc7#flaticon")
+        format("svg");
+  }
+  
+  i[class^="flaticon-"]:before,
+  i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .flaticon-virtual-reality:before {
+    content: "\f161";
+  }
+  .flaticon-nft-1:before {
+    content: "\f163";
+  }
+  .flaticon-box:before {
+    content: "\f171";
+  }
+  .flaticon-basic-shapes:before {
+    content: "\f1e3";
+  }

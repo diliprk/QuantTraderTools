@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - QuantTraderTools</title>
+    
+    <!-- Include your CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-LTR.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-components.css') }}">
+
+
+    <style>
+        /* Navigation styles */
+        .legal-nav {
+            background: var(--clr-dark-blue);
+            border-bottom: 1px solid var(--clr-main);
+            padding: 20px 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .legal-nav h2 {
+            color: var(--clr-main);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .legal-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .legal-nav li {
+            margin: 5px 0;
+        }
+
+        .legal-nav a {
+            color: var(--clr-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .legal-nav a:hover {
+            color: var(--clr-main);
+        }
+
+        .legal-nav a.active {
+            color: var(--clr-main);
+            font-weight: bold;
+        }
+
+        /* Content section styles */
+        .legal-section {
+            padding: 40px 0 80px 0;
+            background: var(--clr-dark-blue);
+            color: var(--clr-white);
+            min-height: 100vh;
+        }
+
+        .legal-section .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .legal-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--clr-main);
+        }
+
+        .legal-section h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--clr-main);
+        }
+
+        .legal-section .last-modified {
+            color: var(--clr-semi-dark);
+            margin-bottom: 2rem;
+        }
+
+        .legal-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .back-to-home {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-to-home a {
+            color: var(--clr-main);
+            text-decoration: none;
+        }
+
+        .back-to-home a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .legal-nav {
+                padding: 15px 10px;
+            }
+
+            .legal-nav h2 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .legal-nav ul {
+                gap: 15px;
+            }
+
+            .legal-nav a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .legal-nav ul {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .legal-nav li {
+                width: 100%;
+            }
+
+            .legal-nav a {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+
+</head>
+<body class="dark-theme">
+    <nav class="legal-nav">
+        <h2>Legal</h2>
+        <ul>
+            <li><a href="{{ url_for('terms_conditions') }}">Terms and Conditions</a></li>
+            <li><a href="{{ url_for('privacy_policy') }}" class="active">Privacy Policy</a></li>
+            <li><a href="{{ url_for('refund_policy') }}">Refund Policy</a></li>
+        </ul>
+    </nav>
+    <section class="legal-section">
+        <div class="container">
+            <h1>QuantCopier Privacy Policy</h1>
+
+            <p>QuantTraderTools ("Company," "we," "us," or "our") respects your privacy and is committed to protecting it. This policy explains what information we collect, how we use it, and your choices regarding your data when you use QuantCopier (the "Product") and our related services (the "Services"), including our website (quanttradertools.github.io).</p>
+
+            <h2>Information Collection</h2>
+            <p>We collect information you provide directly, information collected automatically (e.g., usage details, IP address, cookies), and information from third parties (e.g., business partners). This may include personal information (name, email, phone number, location), non-identifying information (company name, role), and data related to your use of the Services. We may also collect information from our business partners, including customers, suppliers, and vendors for business administration. Information submitted or uploaded by our customers and their end-users is considered customer content and is subject to our contractual agreements with those customers.</p>
+
+            <h2>Use of Information</h2>
+            <p>We use your information to provide the Services, fulfill your requests, communicate with you (including marketing communications with your consent), improve our Services, comply with legal obligations, and for other purposes described when you provide the information.</p>
+
+            <h2>Disclosure of Information</h2>
+            <p>We may share aggregated, non-identifying information without restriction. We may share personal information with:</p>
+            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 2rem;">
+                <li>Affiliates</li>
+                <li>Service providers (bound by confidentiality agreements)</li>
+                <li>Business partners</li>
+                <li>Successors in case of a merger or acquisition</li>
+                <li>Legal authorities if required</li>
+            </ul>
+
+            <h2>Your Choices</h2>
+            <p>You can control how some information is collected and used. You can access, correct, or delete your personal information by contacting us at <a href="mailto:quantcopier@gmail.com" style="color: var(--clr-main);">quantcopier@gmail.com</a>. You can also delete your information by deleting your account through the same email address.</p>
+
+            <h2>Data Security</h2>
+            <p>We employ security measures to protect your information, but no transmission over the internet is completely secure.</p>
+
+            <h2>International Data Transfers</h2>
+            <p>Your data may be stored and processed in countries outside your residence, including the United States. By using our Services, you consent to this transfer. We will only transfer your personal information if it is required or permitted under applicable data protection law and if appropriate safeguards are in place.</p>
+
+            <h2>Children's Privacy</h2>
+            <p>Our Services are not for children under 16. We do not knowingly collect data from children under 16. If you believe we have collected such data, please contact us.</p>
+
+            <h2>GDPR</h2>
+            <p>If you are an EEA resident, you have specific rights regarding your data, including access, correction, erasure, restriction of processing, data portability, and the right to withdraw consent or lodge a complaint. Contact us at <a href="mailto:quantcopier@gmail.com" style="color: var(--clr-main);">quantcopier@gmail.com</a> to exercise these rights.</p>
+
+            <h2>Changes to this Policy</h2>
+            <p>We may update this policy. We will notify you of material changes.</p>
+
+            <h2>Contact</h2>
+            <p>For questions about this policy, contact us at <a href="mailto:quantcopier@gmail.com" style="color: var(--clr-main);">quantcopier@gmail.com</a>.</p>
+
+            <div class="back-to-home">
+                <a href="/">&larr; Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include your JavaScript files -->
+    <script src="{{ url_for('static', filename='js/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

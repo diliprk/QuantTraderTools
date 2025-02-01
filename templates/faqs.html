@@ -1,0 +1,144 @@
+{% macro render_faqs() %}
+<section class="faq mega-section" id="faq">
+  <div class="shape-top-left"></div>
+  <div class="shape-bottom-right"></div>
+  <div class="pattern-top-end-dir"></div>
+  <div class="pattern-bottom-start-dir"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-5 align-self-center">
+        <div class="faq-img start-dir-img-frame wow fadeIn" data-wow-delay="0.2s">
+          <img class="img-fluid" loading="lazy" src="{{ url_for('static',filename='images/faq-illustration.png') }}" alt="">
+        </div>
+      </div>
+      <div class="col-12 col-lg-7">
+        <div class="sec-heading">
+          <div class="content-area">
+            <span class="pre-title wow fadeInUp" data-wow-delay=".2s">FAQs</span>
+            <h2 class="title wow fadeInUp" data-wow-delay=".4s">
+              <span class='hollow-text'>frequently </span> asked questions
+            </h2>
+          </div>
+        </div>
+        <!--Start Accordion List For FAQ-->
+        <div class="faq-accordion" id="accordion">
+          <div class="card mb-2">
+            <div class="card-header" id="heading-1">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                  Are my Telegram and discord cerdentials safe?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-1" aria-labelledby="collapse-1" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  Your telegram credentials like API ID and API Hash and Discord self tokens,are not stored in any of our servers, you will only use it locally on the machine where you are going to run the QuantCopier software.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header" id="heading-2">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="true" aria-controls="collapse-2">
+                  How are my MetaTrader5 credentials secured?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-2" aria-labelledby="collapse-2" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  Only your MT5 Account Nr is stored in our secured DB server for the purpose of issuing a license key to an MT5 account. 
+                  Your MT5 account password is manually entered by you in the local config file of the machine where MT5 software is run. 
+                  Your MT5 credentials are only used locally by the QuantCopier software to login into your MT5 account and execute trade signals
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header" id="heading-3">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="true" aria-controls="collapse-3">
+                  Can I switch broker account?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-3" aria-labelledby="collapse-3" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  Yes. You can switch MT4 | MT5 | cTrader | DXTrade | TradeLocker accounts anytime without any extra costs.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header" id="heading-4">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="true" aria-controls="collapse-4">
+                  What Operating Systems are supported?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-4" aria-labelledby="collapse-4" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  QuantCopier MT5 requires Windows operating system. For Mac OS users, an alternative such as a VPS running Windows OS is required.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header" id="heading-5">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="true" aria-controls="collapse-5">
+                  Do I need a VPS?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-5" aria-labelledby="collapse-5" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  Using a VPS is recommended since it allows you to be completely hands-free in your automated trading. A VPS is a virtual computer that runs 24/7 in the cloud.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header" id="heading-6">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="true" aria-controls="collapse-6">
+                  After paying, how do I receive the software?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-6" aria-labelledby="collapse-6" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  After paying, you will receive an email with login and activation instructions. After activating, you will receive your license code, the download link to the software and the installation and user guides.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-2">
+            <div class="card-header" id="heading-7">
+              <h5 class="mb-0 faq-title">
+                <button class="btn btn-link faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="true" aria-controls="collapse-7">
+                  How many channels can I copy?
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapse-7" aria-labelledby="collapse-7" data-bs-parent="#accordion">
+              <div class="card-body">
+                <p class="faq-answer">
+                  There is no limit to the amount of signal channels you can copy trades from.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endmacro %} 

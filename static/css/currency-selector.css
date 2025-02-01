@@ -1,0 +1,24 @@
+.currency-selector {
+  margin-left: 15px;
+  display: inline-block;
+}
+
+.currency-select {
+  background-color: transparent;
+  border: 1px solid #09aff4;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.currency-select option {
+  background-color: #060922;
+  color: #fff;
+}
+
+.currency-select:focus {
+  outline: none;
+  border-color: #09aff4;
+} 

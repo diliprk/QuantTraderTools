@@ -1,0 +1,85 @@
+{% macro render_features() %}
+<section class="services services-boxed mega-section" id="features">
+  <div class="container">
+    <div class="sec-heading">
+      <div class="content-area">
+        <span class="pre-title wow fadeInUp" data-wow-delay=".2s">QUANTCOPIER FEATURES</span>
+        <h2 class="title wow fadeInUp" data-wow-delay=".4s">
+          <span class='hollow-text'>features of our TradeCopier Software</span>
+        </h2>
+        <p class="text wow fadeInUp" data-wow-delay=".6s">
+          Our TradeCopier software works both with discord and telegram signals and offers simple, yet comprehensive <br> range of features designed to streamline your trading experience and maximize profitability.</br>
+        </p>
+      </div>
+    </div>
+    <div class="row gx-4 gy-4 services-row">
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <!--Start First service box-->
+        <div class="box feature-box wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".1s">
+          <div class="feature-icon"><img src="{{ url_for('static',filename='images/laptop-settings.png') }}" height="50" weight="60"></div>
+          <span class="feature-num hollow-text">1</span>
+          <div class="feature-content">
+            <h3 class="feature-title">Ease of Setup</h3>
+            <p class="feature-text">The QuantCopier app offers a user-friendly interface, eliminating the need for installation or configuration of Expert Advisors (EAs), simplifying initial setup and usage.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <!--Start Second service box-->
+        <div class="box feature-box wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".2s">
+          <div class="feature-icon"><img src="{{ url_for('static',filename='images/parsing-signal.png') }}" height="50" weight="10"></div>
+          <span class="feature-num hollow-text">2</span>
+          <div class="feature-content">
+            <h3 class="feature-title">Advanced Signal Parsing</h3>
+            <p class="feature-text">The app uses a sophisticated parsing algorithm to accurately interpret market signals across forex, indices, and commodities, enhancing trading responsiveness.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <!--Start Third service box-->
+        <div class="box feature-box wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".3s">
+          <div class="feature-icon"><img src="{{ url_for('static',filename='images/crypto-trading.png') }}" height="50" weight="60"></div>
+          <span class="feature-num hollow-text">3</span>
+          <div class="feature-content">
+            <h3 class="feature-title">Multiple Take Profits</h3>
+            <p class="feature-text">The app supports creating multiple positions for each take-profit level (up to TP4), allowing traders to manage risk and capitalize on trades by tailoring strategies to varying profit goals.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <!--Start fourth service box-->
+        <div class="box feature-box wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".4s">
+          <div class="feature-icon"><img src="{{ url_for('static',filename='images/signal-80.png') }}" height="50" weight="90"></div>
+          <span class="feature-num hollow-text">4</span>
+          <div class="feature-content">
+            <h3 class="feature-title">Signal Modifications</h3>
+            <p class="feature-text">Automatic updates to trading signals, like stop-loss or take-profit adjustments, are seamlessly integrated into corresponding MT5 positions, maintaining alignment with market conditions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <!--Start 5th service box-->
+        <div class="box feature-box wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".5s">
+          <div class="feature-icon"><img src="{{ url_for('static',filename='images/trading.png') }}" height="50" weight="10"></div>
+          <span class="feature-num hollow-text">5</span>
+          <div class="feature-content">
+            <h3 class="feature-title">Entry Randomization</h3>
+            <p class="feature-text">To avoid detection by prop firms, the app randomly adjusts entry prices and lot sizes, ensuring compliance and maintaining trading eligibility when utilizing popular signals.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 mx-auto">
+        <!--Start 6th service box-->
+        <div class="box feature-box wow fadeInUp reveal-start" data-wow-offset="0" data-wow-delay=".6s">
+          <div class="feature-icon"><img src="{{ url_for('static',filename='images/telegram-app.png') }}" height="50" weight="90"></div>
+          <span class="feature-num hollow-text">6</span>
+          <div class="feature-content">
+            <h3 class="feature-title">Real-time Telegram Alerts</h3>
+            <p class="feature-text">Instant alerts on a private Telegram channel cover all trading activities: new orders, position closures, and stop-loss adjustments, enabling swift decisions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endmacro %} 

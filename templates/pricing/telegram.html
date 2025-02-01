@@ -1,0 +1,121 @@
+{% macro render_pricing_plan_telegram() %}
+<div class="tab-content">
+  <!-- Telegram Tab -->
+  <div class="tab-pane fade show active" id="telegram" role="tabpanel">
+    <div class="row">
+      <!-- Monthly Plan -->
+      <div class="col-12 col-md-6 col-xl-3 mx-auto price-plan">
+        <div class="plan wow fadeInUp" data-wow-delay=".1s">
+          <div class="plan-head">
+            <i class="flaticon-nft-1 plan-icon"></i>
+            <h4 class="plane-name">Monthly</h4>
+            <div class="plan-price">
+              <h3 class="price">10<sup class="currency-symbol">$</sup></h3>
+              <span class="per">per month</span>
+            </div>
+          </div>
+          <div class="plan-details">
+            <ul class="plan-list">
+              <li class="plan-feat"><span class="feat-text">License for 1 MT5 account</span></li>
+              <li class="plan-feat"><span class="feat-text">For 1 month</span></li>
+              <li class="plan-feat">
+                <span class="feat-text">
+                  <img src="{{ url_for('static',filename='images/telegram-plane-white.svg') }}" alt="Telegram" style="width: 24px; height: 24px;">
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a class="cta-btn btn-outline" id="monthly_telegram" onclick="handlePay('monthly_telegram','{{license_key}}')">select plan</a>
+          </div>
+        </div>
+      </div>
+
+      <!--6 Months Plan-->
+      <div class="col-12 col-md-6 col-xl-3 mx-auto price-plan">
+        <div class="plan wow fadeInUp" data-wow-delay=".3s">
+          <div class="plan-head">
+            <i class="flaticon-virtual-reality plan-icon"></i>
+            <h4 class="plane-name">6 Months</h4>
+            <div class="plan-price">
+              <h3 class="price">50<sup class="currency-symbol">$</sup></h3>
+              <span class="per">per month</span>
+            </div>
+          </div>
+          <div class="plan-details">
+            <ul class="plan-list">
+              <li class="plan-feat"><span class="feat-text">Licenses for 2 MT5 accounts</span></li>
+              <li class="plan-feat"><span class="feat-text">For 6 months.</span></li>
+              <li class="plan-feat">
+                <span class="feat-text">
+                  <img src="{{ url_for('static',filename='images/telegram-plane-white.svg') }}" alt="Telegram" style="width: 24px; height: 24px; margin-right: 10px;">
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a class="cta-btn btn-outline" id="half_month" onclick="handlePay('half_month','{{license_key}}')">select plan</a>
+          </div>
+        </div>
+      </div>
+
+      <!--Annual Plan-->
+      <div class="col-12 col-md-6 col-xl-3 mx-auto price-plan">
+        <div class="plan wow fadeInUp" data-wow-delay=".5s">
+          <div class="plan-head">
+            <i class="flaticon-box plan-icon"></i>
+            <h4 class="plane-name">Annual</h4>
+            <div class="plan-price">
+              <h3 class="price">100<sup class="currency-symbol">$</sup></h3>
+              <span class="per">per year</span>
+            </div>
+          </div>
+          <div class="plan-details">
+            <ul class="plan-list">
+              <li class="plan-feat"><span class="feat-text">Licenses for 2 MT5 accounts</span></li>
+              <li class="plan-feat"><span class="feat-text">for <span style="text-transform:lowercase;">a</span> full year.</span></li>
+              <li class="plan-feat">
+                <span class="feat-text">
+                  <img src="{{ url_for('static',filename='images/telegram-plane-white.svg') }}" alt="Telegram" style="width: 24px; height: 24px; margin-right: 10px;">
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a class="cta-btn btn-outline" id="yearly" onclick="handlePay('yearly','{{license_key}}')">select plan</a>
+          </div>
+        </div>
+      </div>
+
+      <!--Lifetime Plan-->
+      <div class="col-12 col-md-6 col-xl-3 mx-auto price-plan">
+        <div class="plan featured wow fadeInUp" data-wow-delay=".6s">
+          <div class="plan-head">
+            <i class="flaticon-basic-shapes plan-icon"></i>
+            <h4 class="plane-name">lifetime</h4>
+            <div class="plan-price">
+              <h3 class="price">200<sup class="currency-symbol">$</sup></h3>
+              <span class="per">one-time payment</span>
+            </div>
+          </div>
+          <div class="plan-details">
+            <ul class="plan-list">
+              <li class="plan-feat"><span class="feat-text">Licenses for 2 MT5 accounts</span></li>
+              <li class="plan-feat"><span class="feat-text">for <span style="text-transform: lowercase;">a</span> lifetime of service.</span></li>
+              <li class="plan-feat">
+                <span class="feat-text">
+                  <img src="{{ url_for('static',filename='images/telegram-plane-white.svg') }}" alt="Telegram" style="width: 24px; height: 24px; margin-right: 10px;">
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="plan-cta">
+            <a class="cta-btn btn-outline" id="lifetime" onclick="handlePay('lifetime','{{license_key}}')">select plan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endmacro %} 

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - QuantTraderTools</title>
+    
+    <!-- Include your CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vendors/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main-LTR.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom-components.css') }}">
+
+    <style>
+        /* Navigation styles */
+        .legal-nav {
+            background: var(--clr-dark-blue);
+            border-bottom: 1px solid var(--clr-main);
+            padding: 20px 15px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .legal-nav h2 {
+            color: var(--clr-main);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .legal-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .legal-nav li {
+            margin: 5px 0;
+        }
+
+        .legal-nav a {
+            color: var(--clr-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            display: block;
+            padding: 5px 10px;
+        }
+
+        .legal-nav a:hover {
+            color: var(--clr-main);
+        }
+
+        .legal-nav a.active {
+            color: var(--clr-main);
+            font-weight: bold;
+        }
+
+        /* Content section styles */
+        .legal-section {
+            padding: 40px 0 80px 0;
+            background: var(--clr-dark-blue);
+            color: var(--clr-white);
+            min-height: 100vh;
+        }
+
+        .legal-section .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .legal-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--clr-main);
+        }
+
+        .legal-section h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            color: var(--clr-main);
+        }
+
+        .legal-section .last-modified {
+            color: var(--clr-semi-dark);
+            margin-bottom: 2rem;
+        }
+
+        .legal-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .back-to-home {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-to-home a {
+            color: var(--clr-main);
+            text-decoration: none;
+        }
+
+        .back-to-home a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media queries */
+        @media (max-width: 768px) {
+            .legal-nav {
+                padding: 15px 10px;
+            }
+
+            .legal-nav h2 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .legal-nav ul {
+                gap: 15px;
+            }
+
+            .legal-nav a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .legal-nav ul {
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .legal-nav li {
+                width: 100%;
+            }
+
+            .legal-nav a {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+
+</head>
+<body class="dark-theme">
+    <nav class="legal-nav">
+        <h2>Legal</h2>
+        <ul>
+            <li><a href="{{ url_for('terms_conditions') }}">Terms and Conditions</a></li>
+            <li><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></li>
+            <li><a href="{{ url_for('refund_policy') }}" class="active">Refund Policy</a></li>
+        </ul>
+    </nav>
+    <section class="legal-section">
+        <div class="container">
+            <h1>QuantCopier Refund Policy</h1>
+
+            <p>This policy applies to purchases of QuantCopier. By using our services, you agree to these terms.</p>
+
+            <h2>Refunds</h2>
+            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 2rem;">
+                <li>All sales are final after 7 days.</li>
+                <li>Refunds are only granted if the product doesn't work as advertised.</li>
+                <li>We do not offer refunds for simply changing your mind or for issues with third-party software or unsupported operating systems.</li>
+                <li>Refunds are not granted for problems connecting or trading with supported MetaTrader5 platform</li>
+            </ul>
+
+            <h2>Subscription Cancellations</h2>
+            <ul style="list-style-type: disc; margin-left: 20px; margin-bottom: 2rem;">
+                <li>You can cancel your monthly subscription anytime.</li>
+                <li>Cancellation prevents future charges, but you won't receive a refund for the current billing cycle.</li>
+            </ul>
+
+            <h2>Requesting a Refund</h2>
+            <p>Contact us at <a href="mailto:quantcopier@gmail.com" style="color: var(--clr-main);">quantcopier@gmail.com</a> to request a refund. If approved, it will be credited to your original payment method within 2-5 business days.</p>
+
+            <div class="alert" style="background: rgba(9, 175, 244, 0.1); border: 1px solid var(--clr-main); padding: 15px; border-radius: 5px; margin-top: 2rem;">
+                <strong>Please note:</strong> We are not responsible for compatibility issues with third-party software or operating systems beyond those listed as supported.
+            </div>
+
+            <div class="back-to-home">
+                <a href="/">&larr; Back to Home</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include your JavaScript files -->
+    <script src="{{ url_for('static', filename='js/jquery-3.6.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 

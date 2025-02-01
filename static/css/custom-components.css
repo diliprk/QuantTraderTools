@@ -1,0 +1,40 @@
+/* Custom Container Styles */
+
+/* Content and List Styles */
+
+/* Tab Styles */
+
+/* Custom Option Styles */
+.custom-option-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-option {
+  border: 2px solid #09aff4;
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.custom-option:hover {
+  border-color: rgba(9, 175, 244, 0.5);
+}
+
+.custom-option-title {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Form Check Input Override */
+.form-check-input {
+  float: unset !important;
+  margin-left: unset !important;
+}
+
+/* Tab Container and Trigger Styles */ 
+
+

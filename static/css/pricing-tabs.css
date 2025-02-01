@@ -1,0 +1,115 @@
+.pricing-tabs {
+  margin-bottom: 3rem;
+}
+
+.pricing-tabs .nav-tabs {
+  border: none;
+  background: rgba(9, 175, 244, 0.1);
+  padding: 0.5rem;
+  border-radius: 50px;
+  display: inline-flex;
+  position: relative;
+}
+
+.pricing-tabs .nav-item {
+  z-index: 2;
+}
+
+.pricing-tabs .nav-link {
+  border: none;
+  padding: 1rem 2rem;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 50px;
+  transition: all 0.2s ease-in-out !important;
+  position: relative;
+  white-space: nowrap;
+}
+
+.pricing-tabs .nav-link:hover {
+  color: #09aff4;
+}
+
+.pricing-tabs .nav-link.active {
+  background: #09aff4;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(9, 175, 244, 0.35);
+}
+
+/* Animation */
+.pricing-tabs .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #09aff4;
+  transition: width 0.3s ease;
+}
+
+.pricing-tabs .nav-link:hover::before {
+  width: 100%;
+}
+
+/* Tab content styling */
+.tab-content {
+  position: relative;
+  width: 100%;
+  min-height: 650px; /* Ensure enough space for content */
+  perspective: 1000px; /* For 3D animations */
+}
+
+.tab-content > .tab-pane {
+  display: none;
+  opacity: 0;
+  transform-origin: top;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tab-content > .active {
+  display: block;
+  opacity: 1;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Keep the wow animations */
+.wow {
+  visibility: visible !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pricing-tabs .nav-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .pricing-tabs .nav-tabs {
+    padding: 0.4rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .pricing-tabs .nav-link {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .tab-content {
+    min-height: 550px; /* Adjust for smaller screens */
+  }
+}
+
+/* FadeInUp Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
