@@ -14,76 +14,56 @@ function handlePay(type, key) {
     const tabPane = clickedButton.closest('.tab-pane');
     const productType = tabPane.id;
     
-    // Construct URL with parameters
-    const params = new URLSearchParams({
-        subscription_type: type,
-        license_key: key,
-        currency: selectedCurrency,
-        amount: price,
-        plan_name: planName,
-        product_type: productType
-    });
+    // Generate order ID matching server format
+    const now = new Date();
+    const timestamp = now.toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    }).replace(/[^\d]/g, '');
     
-    // Redirect to order summary page
-    window.location.href = `/order-summary?${params.toString()}`;
-}
+    const typePrefix = productType.toUpperCase();
+    const orderId = `QCMT5-${typePrefix}-${timestamp}`;
 
-// Add new functions for payment handling
-async function handleUPIPayment(event, orderId, amount, productType) {
-    event.preventDefault();
-    
-    if (!validateForm()) return false;
-    
-    const telegramConfig = getTelegramConfig();
-    await sendTelegramNotification('UPI', telegramConfig.botToken, telegramConfig.chatId);
-    
-    // Show UPI modal
-    document.getElementById('upiModal').style.display = 'flex';
-    
-    // Generate QR code
-    generateQRCode(amount, productType);
-}
-
-async function handleWisePayment(event, amount, orderId) {
-    event.preventDefault();
-    
-    if (!validateForm()) return false;
-    
-    const telegramConfig = getTelegramConfig();
-    await sendTelegramNotification('Wise', telegramConfig.botToken, telegramConfig.chatId);
-    
-    const wiseUrl = `https://wise.com/pay/business/diliprajkumar1?amount=${amount}&currency=USD&description=${orderId}`;
-    window.open(wiseUrl);
-    return false;
-}
-
-function validateForm() {
-    const form = document.getElementById('orderForm');
-    const inputs = form.querySelectorAll('input[type="text"], input[type="email"]');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.style.borderColor = 'red';
-            isValid = false;
-        } else {
-            input.style.borderColor = '';
-        }
-    });
-    
-    if (!isValid) {
-        alert('Please fill in all fields before proceeding with payment');
-        return false;
-    }
-    
-    return true;
-}
-
-// Add this new function to get telegram config
-function getTelegramConfig() {
-    const scriptTag = document.querySelector('script[data-telegram-bot-token]');
-    return {
-        botToken: scriptTag.dataset.telegramBotToken,
-        chatId: scriptTag.dataset.telegramChatId
+    // Prepare API payload
+    const payload = {
+        merchantID: "MID12345AAPL",
+        orderID: orderId,
+        item: `QuantCopier MT5 ${productType.charAt(0).toUpperCase() + productType.slice(1)}`,
+        currency: selectedCurrency === 'USD' ? '$' : '₹',
+        totalAmount: parseInt(price)
     };
-} 
+
+    // Make API call to payment validation endpoint
+    fetch('https://payment-checkout-sigma.vercel.app/api/payment-validation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(text || 'Payment validation failed');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('API Response:', data);
+        if (data.url) {
+            // Open the payment URL in a new tab/window
+            window.open(data.url, '_blank');
+        } else {
+            throw new Error('No payment URL received from server');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Payment processing failed. Please try again. Error: ' + error.message);
+    });
+}
